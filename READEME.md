@@ -38,3 +38,27 @@
   - [x] 호가 모아보기 단위 정보 조회
     - url: `https://api.upbit.com/v1/orderbook/supported_levels`
     - method: `GET`
+
+## Exchange API
+- 주문
+  - [x] 주문 가능 정보
+    - url: `/orders/chance`
+    - method: `GET`
+  - [x] 개별 주문 조회
+    - url: `/order`
+    - method: `GET`
+  - [x] id로 주문리스트 조회
+    - url: `/orders/uuids`
+    - method: `GET`
+  - [x] 체결 대기 주문(Open Order) 조회
+    - url: `/orders/open`
+    - method: `GET`
+  - [x] 종료된 주문(Closed Order) 조회
+    - url: `/orders/closed`
+    - method: `GET`
+  - [x] 주문 취소 접수
+    - url: `/order`
+    - method: `DELETE`
+  - [x] 주문하기
+    - url: `/orders`
+    - method: `POST`
