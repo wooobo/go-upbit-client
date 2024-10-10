@@ -1,4 +1,7 @@
-# Connect API
+# Golang Upbit API Client
+This project provides an easy-to-use Go client for interaction with the Upbit cryptocurrency exchange API.
+
+# Upbit API Docs
 - [upbit api docs](https://docs.upbit.com)
 
 ## Quotation API
