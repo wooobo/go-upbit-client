@@ -1,8 +1,11 @@
-# Connect API
+# Golang Upbit API Client
+This project provides an easy-to-use Go client for interaction with the Upbit cryptocurrency exchange API.
+
+# Upbit API Docs
 - [upbit api docs](https://docs.upbit.com)
 
 ## Quotation API
-
+- 
 - 시세 종목 조회
   - [x] 종목 코드 조회
     - url: `/market/all`
