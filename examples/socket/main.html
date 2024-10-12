@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Data</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function updateCryptoData(data) {
+                const cryptoContainer = document.getElementById('crypto-data');
+                cryptoContainer.innerHTML = formatTickerData(data);
+            }
+
+            function formatTickerData(tickers) {
+                return tickers.map(ticker => `
+                    <div class="ticker-item">
+                        <h3>${ticker.code}</h3>
+                        <p>Opening Price: ${ticker.opening_price}</p>
+                        <p>High Price: ${ticker.high_price}</p>
+                        <p>Low Price: ${ticker.low_price}</p>
+                        <p>Trade Price: ${ticker.trade_price}</p>
+                        <p>Previous Closing Price: ${ticker.prev_closing_price}</p>
+                        <p>Change: ${ticker.change}</p>
+                        <p>Change Price: ${ticker.change_price}</p>
+                        <p>Change Rate: ${ticker.change_rate}%</p>
+                        <p>Trade Volume: ${ticker.trade_volume}</p>
+                        <p>Accumulated Trade Volume: ${ticker.acc_trade_volume}</p>
+                        <p>Accumulated Trade Price: ${ticker.acc_trade_price}</p>
+                        <p>Trade Date: ${ticker.trade_date}</p>
+                        <p>Trade Time: ${ticker.trade_time}</p>
+                    </div>
+                    <hr>
+                `).join('');
+            }
+
+            class WSClient {
+                constructor(url) {
+                    this.url = url;
+                    this.socket = new WebSocket('ws://localhost:8080/ws'+url);
+                }
+
+                onMessage(callback) {
+                    this.socket.onmessage = callback;
+                }
+
+                close() {
+                    this.socket.close();
+                }
+            }
+
+            const ws = new WSClient('/ticker/won/all');
+
+            ws.onMessage((event) => {
+                const data = JSON.parse(event.data);
+                updateCryptoData([data]);
+            });
+
+            return () => {
+                ws.close();
+            };
+        });
+    </script>
+    <style>
+        .ticker-item {
+            margin-bottom: 15px;
+        }
+        h3 {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<h1>Crypto Data</h1>
+<div id="crypto-data">Loading...</div>
+</body>
+</html>
