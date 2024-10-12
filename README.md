@@ -5,7 +5,7 @@ This project provides an easy-to-use Go client for interaction with the Upbit cr
 - [upbit api docs](https://docs.upbit.com)
 
 ## Quotation API
-- 
+
 - 시세 종목 조회
   - [x] 종목 코드 조회
     - url: `/market/all`
@@ -65,3 +65,10 @@ This project provides an easy-to-use Go client for interaction with the Upbit cr
   - [x] 주문하기
     - url: `/orders`
     - method: `POST`
+
+## Socket API
+- [x] 현재가 (Ticker)
+- [x] 체결 (Trade)
+- [x] 호가 (Orderbook)
+- [x] 내 주문 및 체결 (MyOrder)
+- [x] 내 자산 (MyAsset)
