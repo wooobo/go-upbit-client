@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market List</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<h1>Market List</h1>
+<table id="stockTable">
+    <thead>
+    <tr>
+        <th>MARKET</th>
+        <th>KOR</th>
+        <th>ENG</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- hear data list -->
+    </tbody>
+</table>
+
+<script>
+    fetch('http://localhost:8080/markets')
+        .then(response => response.json())
+        .then(data => {
+            const tableBody = document.querySelector('#stockTable tbody');
+            data.forEach(stock => {
+                const row = tableBody.insertRow();
+                row.insertCell(0).textContent = stock.market;
+                row.insertCell(1).textContent = stock.korean_name;
+                row.insertCell(2).textContent = stock.english_name;
+            });
+        })
+        .catch(error => console.error('Error:', error));
+</script>
+</body>
+</html>
