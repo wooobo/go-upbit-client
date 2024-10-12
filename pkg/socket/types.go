@@ -13,7 +13,7 @@ const (
 type Request struct {
 	Ticket         string           `json:"ticket,omitempty"`
 	Type           SubscriptionType `json:"type,omitempty"`
-	Codes          []string         `json:"codes,omitempty"`
+	Codes          []string         `json:"codes"`
 	IsOnlySnapshot bool             `json:"isOnlySnapshot,omitempty"`
 	IsOnlyRealtime bool             `json:"isOnlyRealtime,omitempty"`
 	Format         string           `json:"format,omitempty"`
