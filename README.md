@@ -1,8 +1,43 @@
 # Golang Upbit API Client
-This project provides an easy-to-use Go client for interaction with the Upbit cryptocurrency exchange API.
+This project provides an easy-to-use Golang client for interaction with the Upbit cryptocurrency exchange API.
 
 # Upbit API Docs
 - [upbit api docs](https://docs.upbit.com)
+
+# How to Use
+1. Installation: To install the client, use the following command:
+
+```bash
+go get github.com/wooobo/go-upbit-client
+```
+
+2. Example Usage:
+
+```go
+func main() {
+  client := NewClient(Config{
+    BaseUrl: testUrl,
+    Version: testVer,
+  })
+  
+  actual, err := client.GetMarkets(context.Background(), false)
+  
+  if err != nil {
+    t.Errorf("GetMarkets() error = %v", err)
+  }
+  
+  if len(actual) == 0 {
+    t.Errorf("GetMarkets() got empty response")
+  }
+}
+```
+3. Example
+
+- examples 폴더 참고
+  - examples/markets 폴더를 통해 Public API 사용 예제 확인
+  - examples/socket 폴더를 통해 소켓 API 사용 예제 확인
+
+# Features
 
 ## Quotation API
 
@@ -72,3 +107,7 @@ This project provides an easy-to-use Go client for interaction with the Upbit cr
 - [x] 호가 (Orderbook)
 - [x] 내 주문 및 체결 (MyOrder)
 - [x] 내 자산 (MyAsset)
+
+# API Key Required
+- URL : https://upbit.com/mypage/open_api_management
+![img.png](./examples/img.png)
